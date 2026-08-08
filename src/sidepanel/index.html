@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WordCloudArt</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <img class="logo" src="../../icons/icon32.png" alt="">
+      <div class="topbar-text">
+        <h1>WordCloudArt</h1>
+        <p class="page-label" id="pageLabel">Loading page…</p>
+      </div>
+    </header>
+
+    <div class="source" role="radiogroup" aria-label="Text source">
+      <label><input type="radio" name="source" value="auto" checked><span>Auto</span></label>
+      <label><input type="radio" name="source" value="selection"><span>Selection</span></label>
+      <label><input type="radio" name="source" value="page"><span>Whole page</span></label>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn-primary" id="btnGenerate">Generate</button>
+      <button type="button" class="btn-secondary" id="btnDownload" disabled>Download</button>
+      <button type="button" class="btn-secondary" id="btnCopy" disabled>Copy</button>
+      <button type="button" class="btn-secondary" id="btnTable" disabled>Table</button>
+    </div>
+
+    <div class="preview">
+      <canvas id="preview" width="360" height="300"></canvas>
+      <div class="preview-table is-hidden" id="previewTable"></div>
+      <div class="preview-hint" id="previewHint">
+        <div class="preview-hint-body">
+          <span class="hint-title">Select text, then click Generate</span>
+          <span class="hint-sub">No selection uses the main text of the page</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="status" id="status"></p>
+
+    <div class="settings">
+      <div class="grid-2">
+        <label class="field">Template
+          <select id="templateSelect"></select>
+        </label>
+        <label class="field">Size
+          <select id="imageSize">
+            <option value="s">Small</option>
+            <option value="m" selected>Medium</option>
+            <option value="l">Large</option>
+            <option value="xl">XL</option>
+          </select>
+        </label>
+        <label class="field">Max words
+          <input type="number" id="maxWords" min="5" max="500" value="150">
+        </label>
+        <label class="field">Palette
+          <select id="palette">
+            <option value="ocean" selected>Ocean</option>
+            <option value="sunset">Sunset</option>
+            <option value="forest">Forest</option>
+            <option value="mono">Mono</option>
+            <option value="berry">Berry</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="checks">
+        <label><input type="checkbox" id="allowRepeat" checked> Repeat</label>
+        <label><input type="checkbox" id="keepStopwords"> Common</label>
+        <label><input type="checkbox" id="allowRotate" checked> Vertical</label>
+      </div>
+
+      <label class="field">Exclude
+        <input type="text" id="excludeWords" placeholder="said, just, really">
+      </label>
+    </div>
+
+    <script src="../vendor/wordcloud2.js"></script>
+    <script src="../lib/templates.js"></script>
+    <script src="../lib/text.js"></script>
+    <script src="../lib/wordcloud-engine.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

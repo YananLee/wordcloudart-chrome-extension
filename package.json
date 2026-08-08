@@ -1,0 +1,10 @@
+{
+  "name": "wordcloudart-chrome-extension",
+  "version": "0.1.0",
+  "private": true,
+  "description": "WordCloudArt — Chrome extension that turns a page selection or its main article into a word cloud",
+  "scripts": {
+    "check": "node --check src/content/extract.js && node --check src/lib/text.js && node --check src/lib/templates.js && node --check src/lib/wordcloud-engine.js && node --check src/sidepanel/app.js && node --check src/background/service-worker.js",
+    "zip": "mkdir -p dist && rm -f dist/wordcloudart-$npm_package_version.zip && zip -r -q dist/wordcloudart-$npm_package_version.zip manifest.json icons src -x '*.DS_Store' && echo dist/wordcloudart-$npm_package_version.zip"
+  }
+}
