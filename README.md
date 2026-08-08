@@ -33,6 +33,7 @@ src/lib/wordcloud-engine.js       # Canvas 词云引擎 + 形状蒙版
 src/vendor/wordcloud2.js          # 上游布局库（未改动）
 src/sidepanel/                    # 侧边栏 UI
 icons/                            # 16/32/48/128 图标
+store/LISTING.md                  # Chrome Web Store 上架文案与素材清单
 ```
 
 无构建步骤，源码即产物。
