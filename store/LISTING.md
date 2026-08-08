@@ -164,20 +164,91 @@ https://github.com/YananLee/wordcloudart-chrome-extension/issues
 ### Single purpose description
 
 ```
-Generate a word cloud image from the text of the page the user is currently
-viewing, either from their selection or from the page's main article.
+WordCloudArt generates a word cloud image from the text of the page the user is
+currently viewing. The user opens the side panel, clicks Generate, and the
+extension reads either the text they have selected or the page's main article,
+counts how often each word appears, and draws those words as an image the user
+can download or copy. That is the extension's only function.
 ```
 
 ### Permission justifications
 
-| 权限 | 理由（直接粘贴） |
-|---|---|
-| `sidePanel` | Displays the extension's interface in Chrome's side panel, next to the page the user is reading. |
-| `scripting` | Injects a one-off script into the active tab when the user clicks Generate, to read the selected text or the page's main article. Nothing is injected until the user asks for a word cloud. |
-| `tabs` | Reads the active tab's title and URL to label the panel, to name the downloaded PNG, and to tell the user when a page cannot be read (for example chrome:// pages). |
-| `contextMenus` | Adds a right-click menu entry so the user can open the panel directly from selected text. |
-| `storage` | Stores the user's own interface settings (template, palette, word limit, exclusion list) locally so they persist between sessions. |
-| Host permission `http://*/*`, `https://*/*`, `file:///*` | The user can ask for a word cloud on any page they are reading, so the text-reading script must be injectable on any site. The extension never contacts a server and reads a page only in response to an explicit Generate click. |
+因为申请了主机权限，这个版本会进入 in-depth review。每条理由都要说清楚
+**做什么用、什么时候触发、数据去了哪里**，含糊的一句话是被打回的主因。
+
+**`sidePanel`**
+
+```
+The extension's entire user interface is rendered in Chrome's side panel: the
+Generate button, the preview of the resulting word cloud, and the shape,
+palette and word-count controls. The side panel is used because it sits beside
+the page the user is reading, so they can select text and generate a cloud from
+it without the interface covering the article. The extension has no other UI
+surface.
+```
+
+**`scripting`**
+
+```
+When the user clicks Generate, the extension injects a single script into the
+active tab to read the text the word cloud will be built from: the user's
+current selection, or, when nothing is selected, the main article of the page.
+This is the only way to obtain that text. The script is injected on demand in
+response to the user's click and never runs automatically on page load. It only
+reads text and does not modify the page. The text is used locally to count word
+frequencies and is never transmitted anywhere.
+```
+
+**`tabs`**
+
+```
+The extension reads the active tab's title and URL for three purposes: to show
+the user which page the panel is currently pointed at, to name the downloaded
+PNG file after that page, and to detect pages where Chrome does not permit
+script injection (chrome:// pages, the Chrome Web Store) so it can show a clear
+explanation instead of appearing broken. Browsing history is not read, stored,
+or transmitted.
+```
+
+**`contextMenus`**
+
+```
+The extension adds one right-click menu entry, "Generate word cloud with
+WordCloudArt". A user who has highlighted text on a page can use it to open the
+side panel directly from that selection, instead of having to find the toolbar
+icon. It is the only menu entry the extension creates.
+```
+
+**`storage`**
+
+```
+The extension saves the user's own interface preferences with
+chrome.storage.local: the selected shape template, colour palette, maximum word
+count, export size, and the user's custom list of words to exclude. This is so
+the panel opens with the same settings next time. Only these settings are
+stored, they remain on the user's device, and no page content or personal data
+is ever written to storage.
+```
+
+**Host permissions（`http://*/*`, `https://*/*`, `file:///*`）**
+
+```
+The extension's purpose is to build a word cloud from whatever page the user is
+reading, and people read articles on arbitrary websites, so the text-reading
+script must be injectable on any http or https page. A narrower host list would
+make the extension fail on most of the pages it exists to serve. The file:///*
+pattern covers local HTML files a user has opened; Chrome still requires the
+user to opt in to that separately.
+
+activeTab is not sufficient for this extension. The Generate button lives in the
+side panel, which stays open across tab switches and navigations, so the user's
+click is not a gesture on the page itself and therefore does not grant activeTab
+access to the tab they are looking at.
+
+The permission is used for one thing only: injecting the text-reading script in
+direct response to a Generate click. The extension makes no network requests of
+any kind, so nothing it reads can leave the user's machine.
+```
 
 ### Remote code
 
