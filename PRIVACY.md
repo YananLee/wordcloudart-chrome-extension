@@ -29,4 +29,4 @@ The WordCloudArt extension collects, stores, and transmits no personal data.
 - **No network requests**, no analytics, no remote code, no third-party
   services.
 
-Questions: open an issue on the project repository.
+联系方式 / Contact: [wordcloud.art](https://wordcloud.art)，或在本仓库提 issue。

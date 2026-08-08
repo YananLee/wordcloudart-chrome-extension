@@ -302,3 +302,35 @@ select:focus {
 }
 
 .checks input { margin: 0; }
+
+.site {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.site a {
+  color: var(--muted);
+  font-size: 10.5px;
+  text-decoration: none;
+}
+
+.site a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.site {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.site a {
+  color: var(--muted);
+  font-size: 10.5px;
+  text-decoration: none;
+}
+
+.site a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}

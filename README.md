@@ -3,6 +3,8 @@
 把网页上选中的文本、或自动识别出的正文，变成一张词云图。与 Google Docs 插件版
 （`wordcloudart-docs-addon`）功能一致，但运行在浏览器侧边栏里，独立仓库、独立发布。
 
+官网：[wordcloud.art](https://wordcloud.art)
+
 ## 功能
 
 - 侧边栏面板（Manifest V3 Side Panel），点工具栏图标或右键菜单打开
