@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>隐私政策 · WordCloudArt</title>
+    <meta name="description" content="WordCloudArt Chrome 扩展的隐私政策：不收集、不存储、不传输任何个人数据。">
+    <meta name="robots" content="index, follow">
+    <style>
+      :root {
+        --bg: #f5f5f4;
+        --card: #ffffff;
+        --ink: #1c1917;
+        --muted: #78716c;
+        --line: #e7e5e4;
+        --accent: #0f766e;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        padding: 48px 20px 80px;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.7;
+      }
+
+      main {
+        max-width: 720px;
+        margin: 0 auto;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 40px;
+      }
+
+      header {
+        max-width: 720px;
+        margin: 0 auto 20px;
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .brand {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--accent);
+        text-decoration: none;
+        letter-spacing: 0.01em;
+      }
+
+      .langs {
+        display: flex;
+        gap: 4px;
+      }
+
+      .langs button {
+        appearance: none;
+        border: 1px solid var(--line);
+        background: var(--card);
+        color: var(--muted);
+        border-radius: 6px;
+        padding: 5px 12px;
+        font: inherit;
+        font-size: 13px;
+        cursor: pointer;
+      }
+
+      .langs button[aria-pressed="true"] {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+      }
+
+      h1 {
+        margin: 0 0 6px;
+        font-size: 26px;
+        line-height: 1.3;
+      }
+
+      .updated {
+        margin: 0 0 28px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      h2 {
+        margin: 32px 0 10px;
+        font-size: 17px;
+      }
+
+      p { margin: 0 0 14px; }
+
+      ul {
+        margin: 0 0 14px;
+        padding-left: 22px;
+      }
+
+      li { margin-bottom: 8px; }
+
+      a { color: var(--accent); }
+
+      .lede {
+        padding: 16px 18px;
+        background: #f0fdfa;
+        border-left: 3px solid var(--accent);
+        border-radius: 0 8px 8px 0;
+        font-weight: 600;
+      }
+
+      .lede p { margin: 0; }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0 0 14px;
+        font-size: 15px;
+      }
+
+      th, td {
+        text-align: left;
+        vertical-align: top;
+        padding: 9px 10px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      th {
+        color: var(--muted);
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.9em;
+        background: var(--bg);
+        padding: 1px 5px;
+        border-radius: 4px;
+      }
+
+      footer {
+        max-width: 720px;
+        margin: 24px auto 0;
+        color: var(--muted);
+        font-size: 14px;
+        text-align: center;
+      }
+
+      [data-lang] { display: none; }
+      [data-lang].is-active { display: block; }
+
+      @media (max-width: 600px) {
+        body { padding: 28px 14px 60px; }
+        main { padding: 24px 20px; }
+        h1 { font-size: 22px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="/">WordCloudArt</a>
+      <div class="langs">
+        <button type="button" data-switch="zh" aria-pressed="true">中文</button>
+        <button type="button" data-switch="en" aria-pressed="false">English</button>
+      </div>
+    </header>
+
+    <main>
+      <section data-lang="zh" class="is-active">
+        <h1>隐私政策</h1>
+        <p class="updated">适用于 WordCloudArt Chrome 扩展 · 最后更新：2026 年 8 月 8 日</p>
+
+        <div class="lede">
+          <p>WordCloudArt 不收集、不存储、不传输任何个人数据。扩展本身不发起任何网络请求。</p>
+        </div>
+
+        <h2>页面文本</h2>
+        <p>
+          只有在你点击 Generate 按钮时，扩展才会向当前标签页注入一次脚本，读取你选中的文本，
+          或自动识别出的正文。这段文本只存在于浏览器内存中，用于统计词频和绘制词云，
+          关闭侧边栏后即消失。它不会被写入磁盘，也不会被发送到任何服务器。
+        </p>
+
+        <h2>生成的图片</h2>
+        <p>
+          词云图在你的设备上通过 Canvas 绘制完成。只有当你主动点击「下载」或「复制」时，
+          图片才会离开扩展 —— 保存到你自己的下载目录，或放进你自己的剪贴板。
+        </p>
+
+        <h2>设置项</h2>
+        <p>
+          模板、配色、词数上限和排除词等界面偏好保存在 <code>chrome.storage.local</code>，
+          仅存于本机。这些设置不参与 Chrome 同步，也不会离开你的电脑。
+        </p>
+
+        <h2>网络请求</h2>
+        <p>
+          扩展不发起任何网络请求：没有统计分析，没有远程代码，没有第三方服务，
+          没有账号系统，没有广告或追踪。所有代码都随扩展包一起发布，可在
+          <a href="https://github.com/YananLee/wordcloudart-chrome-extension" target="_blank" rel="noopener">GitHub 仓库</a>
+          中审阅。
+        </p>
+
+        <h2>权限说明</h2>
+        <table>
+          <tbody>
+            <tr>
+              <th><code>sidePanel</code></th>
+              <td>在 Chrome 侧边栏中显示扩展界面。</td>
+            </tr>
+            <tr>
+              <th><code>scripting</code></th>
+              <td>在你点击 Generate 时，向当前标签页注入一次取词脚本。不点击就不注入。</td>
+            </tr>
+            <tr>
+              <th><code>tabs</code></th>
+              <td>读取当前标签页的标题和网址，用于界面提示和给下载的文件命名。</td>
+            </tr>
+            <tr>
+              <th><code>contextMenus</code></th>
+              <td>提供右键菜单入口。</td>
+            </tr>
+            <tr>
+              <th><code>storage</code></th>
+              <td>在本机记住你的界面设置。</td>
+            </tr>
+            <tr>
+              <th>网站访问权限</th>
+              <td>
+                你可能在任何网页上想生成词云，因此取词脚本需要能注入到任意站点。
+                扩展只在你明确点击 Generate 时读取页面，且从不把内容发往任何地方。
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>儿童隐私</h2>
+        <p>本扩展不面向儿童设计，也不会有意收集任何年龄段用户的数据 —— 因为它不收集任何数据。</p>
+
+        <h2>政策变更</h2>
+        <p>
+          如果本政策发生变化，本页顶部的更新日期会随之修改。涉及数据处理方式的实质性变更，
+          会在扩展的版本说明中一并注明。
+        </p>
+
+        <h2>联系方式</h2>
+        <p>
+          有任何疑问，可通过
+          <a href="https://github.com/YananLee/wordcloudart-chrome-extension/issues" target="_blank" rel="noopener">GitHub Issues</a>
+          联系我们。
+        </p>
+      </section>
+
+      <section data-lang="en">
+        <h1>Privacy Policy</h1>
+        <p class="updated">For the WordCloudArt Chrome extension · Last updated: 8 August 2026</p>
+
+        <div class="lede">
+          <p>WordCloudArt collects, stores, and transmits no personal data. The extension makes no network requests at all.</p>
+        </div>
+
+        <h2>Page text</h2>
+        <p>
+          A script is injected into the active tab only when you click Generate, and only to
+          read the text you selected or the main article of the page. That text stays in
+          browser memory, is used to count words and draw the cloud, and is gone when you
+          close the panel. It is never written to disk and never sent to a server.
+        </p>
+
+        <h2>Generated images</h2>
+        <p>
+          The word cloud is drawn on your own device with Canvas. It leaves the extension
+          only when you choose to download it or copy it, in which case it goes to your own
+          downloads folder or your own clipboard.
+        </p>
+
+        <h2>Settings</h2>
+        <p>
+          Interface preferences — template, palette, word limit, exclusion list — are kept in
+          <code>chrome.storage.local</code> on your device. They are not synced and do not
+          leave your computer.
+        </p>
+
+        <h2>Network requests</h2>
+        <p>
+          The extension makes none. No analytics, no remote code, no third-party services, no
+          accounts, no ads, no tracking. All code ships inside the extension package and can
+          be reviewed in the
+          <a href="https://github.com/YananLee/wordcloudart-chrome-extension" target="_blank" rel="noopener">GitHub repository</a>.
+        </p>
+
+        <h2>Permissions</h2>
+        <table>
+          <tbody>
+            <tr>
+              <th><code>sidePanel</code></th>
+              <td>Shows the extension's interface in Chrome's side panel.</td>
+            </tr>
+            <tr>
+              <th><code>scripting</code></th>
+              <td>Injects a one-off text-reading script when you click Generate, and not before.</td>
+            </tr>
+            <tr>
+              <th><code>tabs</code></th>
+              <td>Reads the active tab's title and URL to label the panel and name the downloaded file.</td>
+            </tr>
+            <tr>
+              <th><code>contextMenus</code></th>
+              <td>Adds a right-click entry for opening the panel.</td>
+            </tr>
+            <tr>
+              <th><code>storage</code></th>
+              <td>Remembers your interface settings locally.</td>
+            </tr>
+            <tr>
+              <th>Host access</th>
+              <td>
+                You may want a word cloud on any page you are reading, so the text-reading
+                script must be injectable on any site. The extension reads a page only when
+                you click Generate, and never sends what it reads anywhere.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Children's privacy</h2>
+        <p>
+          This extension is not directed at children and does not knowingly collect data from
+          users of any age, because it collects no data at all.
+        </p>
+
+        <h2>Changes to this policy</h2>
+        <p>
+          If this policy changes, the date at the top of this page will change with it. Any
+          material change to how data is handled will also be noted in the extension's
+          release notes.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          Questions are welcome via
+          <a href="https://github.com/YananLee/wordcloudart-chrome-extension/issues" target="_blank" rel="noopener">GitHub Issues</a>.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <a href="https://wordcloud.art">wordcloud.art</a>
+    </footer>
+
+    <script>
+      (function () {
+        var buttons = document.querySelectorAll('[data-switch]');
+        var sections = document.querySelectorAll('[data-lang]');
+
+        function show(lang) {
+          sections.forEach(function (section) {
+            section.classList.toggle('is-active', section.dataset.lang === lang);
+          });
+          buttons.forEach(function (button) {
+            button.setAttribute('aria-pressed', String(button.dataset.switch === lang));
+          });
+          document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+        }
+
+        buttons.forEach(function (button) {
+          button.addEventListener('click', function () {
+            show(button.dataset.switch);
+          });
+        });
+
+        if ((navigator.language || '').slice(0, 2) !== 'zh') show('en');
+      })();
+    </script>
+  </body>
+</html>
